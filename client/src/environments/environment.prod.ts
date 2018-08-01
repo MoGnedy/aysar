@@ -85,4 +85,7 @@ export const types = {
   1: 'Bathroom'
 };
 
-export let isAuthenticated = false;
+export let user = {
+  isAuthenticated: false,
+  data: {}
+};

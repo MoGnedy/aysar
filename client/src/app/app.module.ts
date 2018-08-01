@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { FieldErrorDisplayComponent } from './field-error-display/field-error-display.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FieldErrorDisplayComponent } from './field-error-display/field-error-di
     RegisterComponent,
     LoginComponent,
     HomeComponent,
-    FieldErrorDisplayComponent
+    FieldErrorDisplayComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
