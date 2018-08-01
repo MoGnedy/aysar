@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, } from '@angular/router';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router/src/router_state';
-import { isAuthenticated } from '../../../environments/environment';
+import { user } from '../../../environments/environment';
 
 @Injectable()
 export class GuestGuardService implements CanActivate {
@@ -10,6 +10,10 @@ export class GuestGuardService implements CanActivate {
     ) {
     }
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        return !isAuthenticated;
+        if (!user.isAuthenticated) {
+            return !user.isAuthenticated;
+        } else {
+            this.router.navigate(['welcome']);
+        }
     }
 }

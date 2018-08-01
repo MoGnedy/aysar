@@ -90,7 +90,11 @@ export const types = {
   1: 'Bathroom'
 };
 
-export let isAuthenticated = false;
+export let user = {
+  isAuthenticated: false,
+  data: {}
+};
+
 
 /*
  * In development mode, to ignore zone related error stack frames such as
