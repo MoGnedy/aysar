@@ -1,0 +1,7 @@
+{
+  "name": "aysar",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
