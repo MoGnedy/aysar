@@ -11,11 +11,14 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  isLoginFormSubmitted: boolean;
   constructor(private router: Router) {
     this.loginForm = new LoginFormClass().getForm();
+    this.isLoginFormSubmitted = false;
   }
 
   onLoginFormSubmit() {
+    this.isLoginFormSubmitted = true;
     if (this.loginForm.valid) {
       this.checkPhoneAndPassword();
     }
@@ -39,5 +42,9 @@ export class LoginComponent {
         this.router.navigate(['/welcome']);
       }
     });
+  }
+
+  isFieldValid(field: string) {
+    return !this.loginForm.get(field).valid && (this.loginForm.get(field).touched || this.isLoginFormSubmitted);
   }
 }

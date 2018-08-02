@@ -16,15 +16,22 @@
         <tr>
           <td>
             <mat-form-field class="example-full-width">
-            <input matInput placeholder="Phone" formControlName="phone" required>
+              <input matInput placeholder="Phone" formControlName="phone" required>
             </mat-form-field>
+            <app-field-error-display [displayError]="isFieldValid('phone') && loginForm.get('phone').hasError('required')" [errorMsg]="Required">
+            </app-field-error-display>
           </td>
         </tr>
         <tr>
-        <td><mat-form-field class="example-full-width">
-          <input matInput placeholder="Password" formControlName="password" type="password" required>
-        </mat-form-field></td>
-      </tr></table>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Password" formControlName="password" type="password" required>
+            </mat-form-field>
+            <app-field-error-display [displayError]="isFieldValid('password') && loginForm.get('password').hasError('required')" [errorMsg]="Required">
+            </app-field-error-display>
+          </td>
+        </tr>
+      </table>
     </form>
     <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
   </mat-card-content>

@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { user as authenticatedUser } from '../../environments/environment';
 
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss']
 })
-export class WelcomeComponent implements OnInit {
-
+export class WelcomeComponent {
   constructor() { }
 
-  ngOnInit() {
+  get authenticatedUser() {
+    return authenticatedUser;
   }
 
 }

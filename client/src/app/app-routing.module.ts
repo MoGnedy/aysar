@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AuthGuardService as AuthGuard } from './shared/guards/auth.guard';
+import { ListItemsComponent } from './list-items/list-items.component';
 
 
 
@@ -15,6 +16,7 @@ const routes: Routes = [
     { path: 'register', component: RegisterComponent, canActivate: [GuestGuard] },
     { path: 'login', component: LoginComponent, canActivate: [GuestGuard] },
     { path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard] },
+    { path: 'list', component: ListItemsComponent }
 ];
 
 @NgModule({
