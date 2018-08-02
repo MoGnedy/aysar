@@ -1,3 +1,52 @@
-<p>
-  register works!
-</p>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span class="example-fill-remaining-space"></span>
+    <span class="align-center"></span>
+    <span class="example-spacer"></span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Register</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="example-form" [formGroup]="registrationForm">
+      <table class="example-full-width" cellspacing="0">
+      <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+            <input matInput placeholder="Name" formControlName="name" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+              <input matInput placeholder="Email" formControlName="email" required>
+              </mat-form-field>
+            </td>
+          </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+            <input matInput placeholder="Phone" formControlName="phone" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr formGroupName="password">
+        <td><mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" formControlName="password" type="password" required>
+        </mat-form-field></td>
+        <td><mat-form-field class="example-full-width">
+          <input matInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required>
+        </mat-form-field></td>
+      </tr>
+    </table>
+    </form>
+    <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button type="submit" (click)="onRegister()" color="primary">Register</button>
+  </mat-card-actions>
+</mat-card>

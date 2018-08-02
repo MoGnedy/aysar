@@ -8,10 +8,7 @@ export class RegistrationForm extends FormClass {
             name: ['', [Validators.required, Validators.maxLength(20)]],
             email: ['', [Validators.required, this.validateEmail.bind(this)]],
             // mobileNumber: ['', [Validators.required, Validators.pattern(/^1[0,1,2,5][0-9]{8}$/)]],
-            phone: this._fb.group({
-                country: ['', [Validators.required]],
-                number: ['', [Validators.required, Validators.pattern(/^1[0,1,2,5][0-9]{8}$/)]]
-            }),
+            phone: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
             password: this._fb.group({
                 password: ['',
                     [Validators.required, Validators.minLength(8),

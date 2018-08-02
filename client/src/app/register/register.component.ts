@@ -17,6 +17,7 @@ export class RegisterComponent {
   }
 
   onRegister() {
+    console.log(this.registrationForm)
     if (this.registrationForm.valid) {
       users.push(this.registrationForm.value);
       user.isAuthenticated = true;
