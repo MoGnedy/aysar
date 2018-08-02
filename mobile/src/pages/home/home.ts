@@ -6,7 +6,9 @@ import {NotificationsPage} from "../notifications/notifications";
 import {SettingsPage} from "../settings/settings";
 import {TripsPage} from "../trips/trips";
 import {SearchLocationPage} from "../search-location/search-location";
+import {TripDetailPage} from "../trip-detail/trip-detail";
 
+import {TripService} from "../../services/trip-service";
 
 @Component({
   selector: 'page-home',
@@ -14,13 +16,15 @@ import {SearchLocationPage} from "../search-location/search-location";
 })
 
 export class HomePage {
+  public trips: any;
   // search condition
   public search = {
     name: "Rio de Janeiro, Brazil",
     date: new Date().toISOString()
   }
 
-  constructor(private storage: Storage, public nav: NavController, public popoverCtrl: PopoverController) {
+  constructor(private storage: Storage, public nav: NavController, public popoverCtrl: PopoverController, public tripService: TripService) {
+    this.trips = tripService.getAll();
   }
 
   ionViewWillEnter() {
@@ -58,6 +62,11 @@ export class HomePage {
     popover.present({
       ev: myEvent
     });
+  }
+
+  // view trip detail
+  viewDetail(id) {
+    this.nav.push(TripDetailPage, {id: id});
   }
 
 }
