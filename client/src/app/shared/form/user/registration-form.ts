@@ -1,6 +1,7 @@
 import { FormClass } from '../form.class';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 
+
 export class RegistrationForm extends FormClass {
     constructor() {
         super();

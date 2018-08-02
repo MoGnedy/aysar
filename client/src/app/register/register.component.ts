@@ -20,6 +20,7 @@ export class RegisterComponent {
     console.log(this.registrationForm)
     if (this.registrationForm.valid) {
       users.push(this.registrationForm.value);
+      user.data = this.registrationForm.value;
       user.isAuthenticated = true;
       this.router.navigate(['/welcome']);
     }

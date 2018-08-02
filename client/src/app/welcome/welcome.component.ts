@@ -7,7 +7,9 @@ import { user as authenticatedUser } from '../../environments/environment';
   styleUrls: ['./welcome.component.scss']
 })
 export class WelcomeComponent {
-  constructor() { }
+  constructor() { 
+    console.log(authenticatedUser)
+  }
 
   get authenticatedUser() {
     return authenticatedUser;
