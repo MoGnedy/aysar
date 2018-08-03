@@ -12,7 +12,8 @@ import { ListItemsComponent } from './list-items/list-items.component';
 
 
 const routes: Routes = [
-    { path: '', component: HomeComponent },
+    // { path: '', component: HomeComponent },
+    { path: '', component: LoginComponent },
     { path: 'register', component: RegisterComponent, canActivate: [GuestGuard] },
     { path: 'login', component: LoginComponent, canActivate: [GuestGuard] },
     { path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard] },
