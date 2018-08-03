@@ -8,13 +8,13 @@
     </div>
 
     <!-- Login form -->
-    <form class="list-form">
+    <form class="list-form" [formGroup]="loginForm">
       <ion-item>
         <ion-label floating>
-          <ion-icon name="mail" item-start class="text-primary"></ion-icon>
-          Email
+          <ion-icon name="phone" item-start class="text-primary" ></ion-icon>
+          Phone
         </ion-label>
-        <ion-input type="email"></ion-input>
+        <ion-input formControlName="phone" value="" type="number"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -22,22 +22,26 @@
           <ion-icon name="lock" item-start class="text-primary"></ion-icon>
           Password
         </ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="password" formControlName="password" value=""></ion-input>
       </ion-item>
     </form>
 
-    <p text-right ion-text color="secondary" tappable (click)="forgotPass()"><strong>Forgot Password?</strong></p>
+    <p text-right ion-text color="secondary" tappable (click)="forgotPass()">
+      <strong>Forgot Password?</strong>
+    </p>
 
     <div>
       <button ion-button icon-start block color="primary" tappable (click)="login()">
         <ion-icon name="log-in"></ion-icon>
         SIGN IN
-      </button>   
+      </button>
 
     </div>
-        <!-- Other links -->
-        <div text-center margin-top>
-          <span ion-text color="secondary" tappable (click)="register()">New here? <strong>Sign up</strong></span>
-        </div>
+    <!-- Other links -->
+    <div text-center margin-top>
+      <span ion-text color="secondary" tappable (click)="register()">New here?
+        <strong>Sign up</strong>
+      </span>
+    </div>
   </div>
 </ion-content>

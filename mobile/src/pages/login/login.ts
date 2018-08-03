@@ -1,16 +1,27 @@
-import {Component} from "@angular/core";
-import {NavController, AlertController, ToastController, MenuController} from "ionic-angular";
-import {HomePage} from "../home/home";
-import {RegisterPage} from "../register/register";
+import { Component } from "@angular/core";
+import { NavController, AlertController, ToastController, MenuController } from "ionic-angular";
+import { HomePage } from "../home/home";
+import { RegisterPage } from "../register/register";
+import { FormGroup } from "@angular/forms";
+import { LoginFormClass } from "../../shared/form/user";
+import { GlobalProvider } from "../../services/global-provider.service";
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
 export class LoginPage {
-
-  constructor(public nav: NavController, public forgotCtrl: AlertController, public menu: MenuController, public toastCtrl: ToastController) {
+  loginForm: FormGroup;
+  isLoginFormSubmitted: boolean;
+  constructor(public nav: NavController,
+    public forgotCtrl: AlertController,
+    public menu: MenuController,
+    public toastCtrl: ToastController,
+    private globalProvider: GlobalProvider
+  ) {
     this.menu.swipeEnable(false);
+    this.loginForm = new LoginFormClass().getForm();
+    this.isLoginFormSubmitted = false;
   }
 
   // go to register page
@@ -20,7 +31,31 @@ export class LoginPage {
 
   // login and go to home page
   login() {
-    this.nav.setRoot(HomePage);
+    // this.nav.setRoot(HomePage);
+    this.isLoginFormSubmitted = true;
+    if (this.loginForm.valid) {
+      this.checkPhoneAndPassword();
+    }
+  }
+
+  checkUserPhone(user): boolean {
+    const phone = this.loginForm.get('phone').value;
+    return user.phone === phone;
+  }
+
+  checkUserPassword(user): boolean {
+    const password = this.loginForm.get('password').value;
+    return user.password === password;
+  }
+
+  checkPhoneAndPassword() {
+    this.globalProvider.globalVar.users.forEach(element => {
+      if (this.checkUserPhone(element) && this.checkUserPassword(element)) {
+        this.globalProvider.globalVar.user.data = element;
+        this.globalProvider.globalVar.user.isAuthenticated = true;
+        this.nav.setRoot(HomePage);
+      }
+    });
   }
 
   forgotPass() {
